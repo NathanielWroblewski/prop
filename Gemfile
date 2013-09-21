@@ -33,7 +33,7 @@ group :test, :development do
   gem 'rspec-mocks', github: 'rspec/rspec-mocks'
   gem 'rspec-rails', github: 'rspec/rspec-rails'
   gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
-  gem 'zeus'
+  gem 'zeus', '>= 0.13.4.pre2'
 end
 
 group :development do

@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = Prop::VERSION
   spec.authors       = ["Nathaniel Wroblewski"]
   spec.email         = ["nathanielwroblewski@gmail.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = %q{Generate a rails template}
+  spec.summary       = %q{Generate a rails template}
   spec.homepage      = ""
   spec.license       = "MIT"
 

@@ -1,6 +1,5 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+# -*- encoding: utf-8 -*-
+$:.push File.expand_path('../lib', __FILE__)
 require 'prop/version'
 require 'date'
 
@@ -17,14 +16,16 @@ It is used to get a jump start on a working app.
   HERE
 
   spec.email         = ["nathanielwroblewski@gmail.com"]
-  spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  spec.executables   = `git ls-files -- bin/*`.split("\n").map { |file| File.basename(file) }
+  spec.extra_rdoc_files = %w[README.md LICENSE]
   spec.name          = "prop"
   spec.summary       = 'Generate a Rails app using pre-configured best practices'
-  spec.homepage      = ""
+  spec.homepage      = 'https://github.com/NathanielWroblewski/prop'
   spec.license       = "MIT"
 
-  spec.files         = `git ls-files`.split($/)
+  spec.files            = `git ls-files`.split("\n")
+  spec.rdoc_options     = ['--charset=UTF-8']
+  spec.require_paths    = ['lib']
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
-  spec.require_paths = ['lib']
   spec.version       = Prop::VERSION
 end

@@ -195,6 +195,14 @@ module Prop
         'app/assets/stylesheets/application.css.scss'
     end
 
+    def setup_guardfile
+      copy_file 'Guardfile', 'Guardfile'
+    end
+
+    def init_zeus
+      run 'zeus init'
+    end
+
     def gitignore_files
       remove_file '.gitignore'
       copy_file 'prop_gitignore', '.gitignore'
@@ -270,6 +278,29 @@ module Prop
       append_file 'Rakefile' do
         "task(:default).clear\ntask :default => [:spec]\n"
       end
+    end
+
+    def open_tab
+      run 'PWD = pwd'
+      run 'launch () {
+        /usr/bin/osascript <<-EOF
+        tell application "iTerm"
+            make new terminal
+            tell the current terminal
+                activate current session
+                launch session "Default Session"
+                tell the last session
+                    write text "cd $PWD"
+                end tell
+            end tell
+        end tell
+        EOF
+        }'
+    end
+
+    def start_zeus
+      open_tab
+      run 'zeus start'
     end
 
     private

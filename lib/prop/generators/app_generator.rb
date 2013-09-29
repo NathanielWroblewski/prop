@@ -47,9 +47,12 @@ module Prop
       invoke :copy_miscellaneous_files
       invoke :customize_error_pages
       invoke :remove_routes_comment_lines
+      invoke :create_guard_file
+      invoke :initialize_zeus
       invoke :setup_git
       invoke :create_heroku_apps
       invoke :create_github_repo
+      invoke :start_zeus
       invoke :outro
     end
 
@@ -133,6 +136,15 @@ module Prop
       build :setup_stylesheets
     end
 
+    def create_guard_file
+      say 'Creating Guardfile'
+      build :setup_guardfile
+    end
+
+    def initialize_zeus
+      build :init_zeus
+    end
+
     def setup_git
       say 'Initializing git'
       invoke :setup_gitignore
@@ -177,6 +189,10 @@ module Prop
 
     def remove_routes_comment_lines
       build :remove_routes_comment_lines
+    end
+
+    def start_zeus
+      build :start_zeus
     end
 
     def outro

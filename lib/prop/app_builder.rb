@@ -299,8 +299,22 @@ module Prop
     end
 
     def start_zeus
-      open_tab
-      run 'zeus start'
+      run 'PWD = pwd'
+      run 'launch () {
+        /usr/bin/osascript <<-EOF
+        tell application "iTerm"
+            make new terminal
+            tell the current terminal
+                activate current session
+                launch session "Default Session"
+                tell the last session
+                    write text "cd $PWD"
+                    write text "zeus start"
+                end tell
+            end tell
+        end tell
+        EOF
+        }'
     end
 
     private

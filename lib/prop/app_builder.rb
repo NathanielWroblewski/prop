@@ -284,42 +284,24 @@ module Prop
       end
     end
 
-    def open_tab
-      run 'PWD = pwd'
-      run 'launch () {
-        /usr/bin/osascript <<-EOF
-        tell application "iTerm"
-            make new terminal
-            tell the current terminal
-                activate current session
-                launch session "Default Session"
-                tell the last session
-                    write text "cd $PWD"
-                end tell
-            end tell
-        end tell
-        EOF
-        }'
-    end
-
     def start_zeus
-      run 'PWD = pwd'
-      run 'launch () {
+      run "launch () {
+        PWD = pwd
         /usr/bin/osascript <<-EOF
-        tell application "iTerm"
+        tell application \"iTerm\"
             make new terminal
             tell the current terminal
                 activate current session
-                launch session "Default Session"
+                launch session \"Default Session\"
                 tell the last session
-                    write text "cd $PWD"
-                    write text "zeus start"
+                    write text \"cd $PWD\"
+                    write text \"zeus start\"
                 end tell
             end tell
         end tell
         EOF
-        }'
-      run 'launch'
+        }
+        launch"
     end
 
     private

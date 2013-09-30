@@ -29,20 +29,20 @@ group :development do
 end
 
 group :development, :test do
-  gem 'capybara', github: 'jnicklas/capybara'
+  gem 'capybara'
   gem 'factory_girl_rails'
   gem 'parallel_tests'
-  gem 'rspec', github: 'rspec/rspec'
-  gem 'rspec-core', github: 'rspec/core'
-  gem 'rspec-expectations', github: 'rspec/rspec-expectations'
-  gem 'rspec-mocks', github: 'rspec/rspec-mocks'
-  gem 'rspec-rails', github: 'rspec/rspec-rails'
-  gem 'shoulda-matchers', github: 'thoughtbot/shoulda-matchers'
+  gem 'rspec'
+  gem 'rspec-core'
+  gem 'rspec-expectations'
+  gem 'rspec-mocks'
+  gem 'rspec-rails', '>= 2.14'
+  gem 'shoulda-matchers'
   gem 'zeus', '>= 0.13.4.pre2'
 end
 
 group :test do
-  gem 'capybara-webkit', github: 'thoughtbot/capybara-webkit'
+  gem 'capybara-webkit', '>= 1.0.0'
   gem 'database_cleaner'
   gem 'launchy'
   gem 'simplecov', require: false

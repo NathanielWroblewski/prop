@@ -315,6 +315,7 @@ module Prop
         end tell
         EOF
         }'
+      run 'launch'
     end
 
     private

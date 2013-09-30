@@ -18,7 +18,7 @@ It is used to get a jump start on a working app.
   spec.email         = ["nathanielwroblewski@gmail.com"]
   spec.executables   = `git ls-files -- bin/*`.split("\n").map { |file| File.basename(file) }
   spec.extra_rdoc_files = %w[README.md LICENSE]
-  spec.name          = "prop"
+  spec.name          = "prop_up"
   spec.summary       = 'Generate a Rails app using pre-configured best practices'
   spec.homepage      = 'https://github.com/NathanielWroblewski/prop'
   spec.license       = "MIT"

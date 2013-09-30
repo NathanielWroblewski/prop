@@ -1,6 +1,6 @@
 Prop
 ===
-![Peg Leg Bates Photo](https://raw.github.com/NathanielWroblewski/prop/master/app/assets/images/peg-leg-bates.jpg)
+![Peg Leg Bates Photo](https://raw.github.com/NathanielWroblewski/prop/master/peg-leg-bates.jpg)
 
 Description
 ---
@@ -14,7 +14,7 @@ brew install hub
 ```
 Install Prop.
 ```bash
-gem install prop
+gem install prop_up
 ```
 Let Prop prop your app up.
 ```bash
@@ -53,12 +53,6 @@ guard
 Guard watches your spec files so that anytime you make a change, your specs will run.  You can also hit your enter/return key to run all your specs.  `exit` will exit guard.
 
 I use the final tab as my normal terminal window/git branching/for entering `zeus c` when necessary.
-
-Finally, create your database.
-
-```bash
-zeus rake db:create
-```
 
 Workflow
 ---
@@ -222,7 +216,8 @@ TODO
 * Automate the opening of the iTerm tabs and run the scripts inside those tabs (starting zeus, guard, server)
 * Add Devise
 * Add a Google Maps map and a Leaflet map
-* Add Figaro
 * Add Google Places library
 * Add Backbone
 * Add spec generation
+* Make wiki
+* Remove dependency on hub

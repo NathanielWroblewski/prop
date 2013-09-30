@@ -270,6 +270,10 @@ module Prop
         "Application.routes.draw do\nend"
     end
 
+    def setup_backbone_rails
+      run 'rails g backbone:install'
+    end
+
     def disable_xml_params
       copy_file 'disable_xml_params.rb', 'config/initializers/disable_xml_params.rb'
     end

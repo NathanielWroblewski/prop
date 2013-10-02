@@ -47,7 +47,10 @@ module Prop
       invoke :copy_miscellaneous_files
       invoke :customize_error_pages
       invoke :remove_routes_comment_lines
+      invoke :setup_backbone
       invoke :setup_backbone_rails
+      invoke :setup_foundation
+      invoke :setup_application_js
       invoke :setup_google_places
       invoke :create_guard_file
       invoke :initialize_zeus
@@ -198,8 +201,20 @@ module Prop
       build :remove_routes_comment_lines
     end
 
+    def setup_foundation
+      build :setup_foundation
+    end
+
+    def setup_backbone
+      build :setup_backbone
+    end
+
     def setup_backbone_rails
       build :setup_backbone_rails
+    end
+
+    def setup_application_js
+      build :setup_application_js
     end
 
     def start_zeus

@@ -1,4 +1,4 @@
-module Prop
+  module Prop
   class AppBuilder < Rails::AppBuilder
     include Prop::Actions
 
@@ -272,6 +272,19 @@ module Prop
       replace_in_file 'config/routes.rb',
         /Application\.routes\.draw do.*end/m,
         "Application.routes.draw do\nend"
+    end
+
+    def setup_foundation
+      run 'rails g foundation:install'
+    end
+
+    def setup_backbone
+      copy_file 'backbone.js', 'app/assets/javascripts/backbone.js'
+      copy_file 'underscore.js', 'app/assets/javascripts/underscore.js'
+    end
+
+    def setup_application_js
+      copy_file 'application.js', 'app/assets/javascripts/application.js'
     end
 
     def setup_backbone_rails

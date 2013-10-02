@@ -216,7 +216,7 @@ TODO
 * Automate the opening of the iTerm tabs and run the scripts inside those tabs (starting zeus, guard, server)
 * Add Devise
 * Add a Google Maps map and a Leaflet map
-* Add Google Places library
 * Add spec generation
 * Make wiki
 * Remove dependency on hub
+* Write specs for app generator

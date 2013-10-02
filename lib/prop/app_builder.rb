@@ -195,6 +195,10 @@ module Prop
         'app/assets/stylesheets/application.css.scss'
     end
 
+    def setup_google_places
+      copy_file 'places.coffee', 'app/assets/javascripts/places.coffee'
+    end
+
     def setup_guardfile
       copy_file 'Guardfile', 'Guardfile'
     end

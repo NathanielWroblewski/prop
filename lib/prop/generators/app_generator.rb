@@ -48,6 +48,7 @@ module Prop
       invoke :customize_error_pages
       invoke :remove_routes_comment_lines
       invoke :setup_backbone_rails
+      invoke :setup_google_places
       invoke :create_guard_file
       invoke :initialize_zeus
       invoke :setup_git
@@ -135,6 +136,11 @@ module Prop
     def setup_stylesheets
       say 'Setting up stylesheets'
       build :setup_stylesheets
+    end
+
+    def setup_google_places
+      say 'Integrating Google Places library'
+      build :setup_google_places
     end
 
     def create_guard_file

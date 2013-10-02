@@ -217,7 +217,6 @@ TODO
 * Add Devise
 * Add a Google Maps map and a Leaflet map
 * Add Google Places library
-* Add Backbone
 * Add spec generation
 * Make wiki
 * Remove dependency on hub

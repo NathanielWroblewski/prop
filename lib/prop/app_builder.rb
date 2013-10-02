@@ -284,6 +284,7 @@
     end
 
     def setup_application_js
+      remove_file 'app/assets/javascripts/application.js'
       copy_file 'application.js', 'app/assets/javascripts/application.js'
     end
 

@@ -77,6 +77,13 @@
         "Mail.register_interceptor RecipientInterceptor.new(ENV['EMAIL_RECIPIENTS'])\n"
     end
 
+    def setup_devise
+      run 'rails g devise:install'
+      run 'rails g devise User'
+      run 'rake db:migrate'
+      run 'rails g devise:views'
+    end
+
     def create_partials_directory
       empty_directory 'app/views/application'
     end

@@ -54,6 +54,7 @@ module Prop
       invoke :setup_google_places
       invoke :create_guard_file
       invoke :initialize_zeus
+      invoke :setup_devise
       invoke :setup_git
       invoke :create_heroku_apps
       invoke :create_github_repo
@@ -106,6 +107,11 @@ module Prop
     def setup_staging_environment
       say 'Setting up the staging environment'
       build :setup_staging_environment
+    end
+
+    def setup_devise
+      say 'Creating users, login, and facebook connect'
+      build :setup_devise
     end
 
     def create_prop_views

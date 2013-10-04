@@ -97,7 +97,8 @@
     end
 
     def create_application_layout
-      template 'prop_layout.html.erb.erb',
+      remove_file 'app/views/layouts/application.html.erb'
+      copy_file 'prop_layout.html.erb.erb',
         'app/views/layouts/application.html.erb',
         :force => true
     end
@@ -282,6 +283,7 @@
     end
 
     def setup_foundation
+      remove_file 'app/views/layouts/application.html.erb'
       run 'rails g foundation:install'
     end
 

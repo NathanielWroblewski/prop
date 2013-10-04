@@ -40,7 +40,6 @@ module Prop
       invoke :setup_test_environment
       invoke :setup_production_environment
       invoke :setup_staging_environment
-      invoke :create_prop_views
       invoke :setup_coffeescript
       invoke :configure_app
       invoke :setup_stylesheets
@@ -50,6 +49,7 @@ module Prop
       invoke :setup_backbone
       invoke :setup_backbone_rails
       invoke :setup_foundation
+      invoke :create_prop_views
       invoke :setup_application_js
       invoke :setup_google_places
       invoke :create_guard_file

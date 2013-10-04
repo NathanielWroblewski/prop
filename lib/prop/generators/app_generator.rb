@@ -46,6 +46,7 @@ module Prop
       invoke :copy_miscellaneous_files
       invoke :customize_error_pages
       invoke :remove_routes_comment_lines
+      invoke :setup_modernizr
       invoke :setup_backbone
       invoke :setup_backbone_rails
       invoke :setup_foundation
@@ -211,7 +212,13 @@ module Prop
       build :setup_foundation
     end
 
+    def setup_modernizr
+      say 'Initializing modernizr.js'
+      build :setup_modernizr
+    end
+
     def setup_backbone
+      say 'Initializing backbone.js'
       build :setup_backbone
     end
 

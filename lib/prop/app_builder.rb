@@ -287,6 +287,10 @@
       run 'rails g foundation:install'
     end
 
+    def setup_modernizr
+      copy_file 'modernizr.js', 'app/assets/javascripts/modernizr.js'
+    end
+
     def setup_backbone
       copy_file 'backbone.js', 'app/assets/javascripts/backbone.js'
       copy_file 'underscore.js', 'app/assets/javascripts/underscore.js'

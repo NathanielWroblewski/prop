@@ -260,6 +260,20 @@
       run "#{path_addition} hub create #{repo_name}"
     end
 
+    def setup_travis_ci
+      path_addition = override_path_for_tests
+      run "#{path_addition} travis login --org --auto"
+      run "#{path_addition} travis enable"
+      copy_file '.travis.yml', '.travis.yml'
+    end
+
+    def initial_commit_and_push
+      path_addition = override_path_for_tests
+      run "#{path_addition} git add ."
+      run "#{path_addition} git commit -m 'Initial Commit'"
+      run "#{path_addition} git push -u origin master"
+    end
+
     def copy_miscellaneous_files
       copy_file 'errors.rb', 'config/initializers/errors.rb'
     end

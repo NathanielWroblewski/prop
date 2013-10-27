@@ -8,6 +8,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'bundler', '~> 1.3'
   spec.add_dependency 'rails', '4.0.0'
   spec.add_dependency 'hub'
+  spec.add_dependency 'travis'
   spec.authors = ['Nathaniel Wroblewski']
   spec.date = Date.today.strftime('%Y-%m-%d')
 

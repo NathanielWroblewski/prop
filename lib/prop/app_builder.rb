@@ -3,6 +3,11 @@ require 'travis'
   class AppBuilder < Rails::AppBuilder
     include Prop::Actions
 
+    def resolve_qt4_dependency
+      run 'brew install qt4'
+      run 'bundle'
+    end
+
     def readme
       template 'README.md.erb', 'README.md'
     end
@@ -150,6 +155,39 @@ require 'travis'
     def use_rspec_binstub
       run 'bundle binstub rspec-core'
       run 'rm bin/autospec'
+    end
+
+    def generate_login_specs
+      empty_directory 'spec/features'
+      copy_file 'user_sign_up_spec.rb', 'spec/features/user_sign_up_spec.rb'
+      copy_file 'user_sign_in_spec.rb', 'spec/features/user_sign_in_spec.rb'
+    end
+
+    def clean_up_factories
+      remove_file 'spec/factories/users.rb'
+      remove_file 'spec/models/user_spec.rb'
+      remove_file 'app/views/devise/registrations/new.html.erb'
+      copy_file 'factories.rb', 'spec/factories/factories.rb'
+    end
+
+    def create_controller_for_sign_in
+      copy_file 'new_registration.html.erb', 'app/views/devise/registrations/new.html.erb'
+      replace_in_file 'config/routes.rb',
+        /Application\.routes\.draw do/,
+        "Application.routes.draw do\nroot to: 'application#index'\n"
+      remove_file 'app/controllers/application_controller.rb'
+      copy_file 'application_controller.rb', 'app/controllers/application_controller.rb'
+      copy_file 'root_index.html.erb', 'app/views/application/index.html.erb'
+    end
+
+    def enable_logout
+      empty_directory 'app/views/shared'
+      copy_file 'nav_bar.html.erb', 'app/views/shared/_nav_bar.html.erb'
+      replace_in_file 'config/initializers/devise.rb', /config\.sign_out_via = \:delete/, "config.sign_out_via = :get\n"
+    end
+
+    def migrate_test_db
+      run 'rake db:test:prepare'
     end
 
     def configure_background_jobs_for_rspec

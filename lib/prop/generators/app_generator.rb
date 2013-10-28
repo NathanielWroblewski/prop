@@ -33,6 +33,7 @@ module Prop
     end
 
     def prop_customizations
+      invoke :resolve_qt4_dependency
       invoke :remove_garbage_files
       invoke :customize_gemfile
       invoke :setup_database
@@ -56,6 +57,7 @@ module Prop
       invoke :create_guard_file
       invoke :initialize_zeus
       invoke :setup_devise
+      invoke :generate_specs
       invoke :setup_git
       invoke :create_heroku_apps
       invoke :create_github_repo
@@ -63,6 +65,10 @@ module Prop
       invoke :initial_commit_and_push
       invoke :start_zeus
       invoke :outro
+    end
+
+    def resolve_qt4_dependency
+      build :resolve_qt4_dependency
     end
 
     def remove_garbage_files
@@ -115,6 +121,15 @@ module Prop
     def setup_devise
       say 'Creating users, login, and facebook connect'
       build :setup_devise
+    end
+
+    def generate_specs
+      say 'Generating specs'
+      build :clean_up_factories
+      build :generate_login_specs
+      build :create_controller_for_sign_in
+      build :enable_logout
+      build :migrate_test_db
     end
 
     def create_prop_views

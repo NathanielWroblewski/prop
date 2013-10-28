@@ -59,6 +59,8 @@ module Prop
       invoke :setup_git
       invoke :create_heroku_apps
       invoke :create_github_repo
+      invoke :setup_travis_ci
+      invoke :initial_commit_and_push
       invoke :start_zeus
       invoke :outro
     end
@@ -179,6 +181,16 @@ module Prop
     def create_github_repo
       say 'Creating Github repo'
       build :create_github_repo, "#{app_name}"
+    end
+
+    def setup_travis_ci
+      say 'Setting up Travis CI'
+      build :setup_travis_ci
+    end
+
+    def initial_commit_and_push
+      say 'Performing initial commit and pushing to Github'
+      build :initial_commit_and_push
     end
 
     def setup_gitignore

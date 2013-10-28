@@ -1,3 +1,4 @@
+require 'travis'
   module Prop
   class AppBuilder < Rails::AppBuilder
     include Prop::Actions
@@ -258,6 +259,29 @@
     def create_github_repo(repo_name)
       path_addition = override_path_for_tests
       run "#{path_addition} hub create #{repo_name}"
+    end
+
+    def setup_travis_ci
+      path_addition = override_path_for_tests
+      run "#{path_addition} travis login --org --auto"
+      run "#{path_addition} travis sync"
+      run "#{path_addition} travis enable"
+      copy_file '.travis.yml', '.travis.yml'
+    end
+
+    def self.github_username
+      `travis login --org --auto`
+      tk = `travis token`
+      token = tk.split(' ').pop
+      client = ::Travis::Client.new(access_token: "#{token}")
+      client.user.login
+    end
+
+    def initial_commit_and_push
+      path_addition = override_path_for_tests
+      run "#{path_addition} git add ."
+      run "#{path_addition} git commit -m 'Initial Commit'"
+      run "#{path_addition} git push -u origin master"
     end
 
     def copy_miscellaneous_files

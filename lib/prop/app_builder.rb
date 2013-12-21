@@ -344,6 +344,10 @@ require 'travis'
         "Application.routes.draw do\nend"
     end
 
+    def setup_figaro
+      run 'rails g figaro:install'
+    end
+
     def setup_foundation
       remove_file 'app/views/layouts/application.html.erb'
       run 'rails g foundation:install'

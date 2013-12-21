@@ -50,6 +50,7 @@ module Prop
       invoke :setup_modernizr
       invoke :setup_backbone
       invoke :setup_backbone_rails
+      invoke :setup_figaro
       invoke :setup_foundation
       invoke :create_prop_views
       invoke :setup_application_js
